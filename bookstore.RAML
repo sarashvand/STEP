@@ -1,0 +1,63 @@
+#%RAML 0.8
+  ---
+  title: e-BookMobile API
+  baseUri: http://api.e-bookmobile.com/{version}
+  version: v1
+  
+  
+  /users:
+	/authors:
+		/{authorname}:
+	/books:	
+		/{bookTitle}: 
+		get:
+			queryParameters: 
+				author:
+					displayName: Author
+					Type: string
+					description: An Author's full name
+					example: J. K. Rowling
+					required: false
+				publicationYear:
+					displayName: Pub year
+					type: number
+					description: the year released for the first time in the US
+					example: 1995
+					required: false
+				rating:
+					displayName: Rating
+					type: number
+					description: Average rating (1-5) submitted by users
+					example: 3.04
+					required: false
+				isbn:
+					displayName: ISBN
+					type: string
+					minLength: 10
+					example: 454545454545?
+			responses:
+				200:
+				 body:
+					application/json:
+						{
+							"data": {
+							   "id": "kjkjk",
+							   "title": "Harry potter",
+							   "description": "null",
+							   "datetime": "1441533193",
+							   "genre": "fun",
+							   "author": "j.k rowling",
+							   "link": "http://e-BookMobile.com/books/harrypotter",
+							},
+							"success": true,
+							"status": 200
+						}
+		put:
+			queryParameters:
+				access_token: 
+					displayName: Access Token
+					type: string
+					description: Token giving you permission to make call
+					required: true
+		post:
+		
